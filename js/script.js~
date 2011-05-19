@@ -1,0 +1,58 @@
+function updateData() {
+$(function() {
+	// setup ul.tabs to work as tabs for each div directly under div.panes
+	$("ul.tabs").tabs("div.panes > div");
+});
+	$.getJSON('today', function (today) {
+		$('dl#today').html('<dt>Breakfast:</dt><dd>' + today.breakfast + '<dd><dt>Lunch:</dt><dd>' + today.lunch + '<dd><dt>Dinner:</dt><dd>' + today.dinner + '<dd><dt>Snack:</dt><dd>' + today.snack + '<dd>');
+	});
+$('ul.list').html('');
+	$.getJSON('breakfast', function (breakfast) {
+		$.each(breakfast.split(';'), function () {
+			$('ul#breakfast').append('<li>' + this + '</li>');
+		});
+	});
+
+	$.getJSON('lunch', function (lunch) {
+		$.each(lunch.split(';'), function () {
+			$('ul#lunch').append('<li>' + this + '</li>');
+		});
+	});
+	$.getJSON('dinner', function (dinner) {	
+		$.each(dinner.split(';'), function () {
+			$('ul#dinner').append('<li>' + this + '</li>');
+		});
+	}); 
+	$.getJSON('snack', function (snack) {
+		$.each(snack.split(';'), function () {
+			$('ul#snack').append('<li>' + this + '</li>');
+		});
+	});
+	$.get('expense', function (expense) {
+		$('span#expense').html(expense);
+	});
+	$.getJSON('purchase', function (data) {
+		$.each(data, function (key, val) {
+			$('ul#purchase').append('<li>' + key + ': $' + val + '</li>');
+		});
+	});
+}
+
+$(document).ready(function () {
+	updateData();
+
+	$('#mealBttn').click(function () {
+		$.post('add', $('form#eat').serialize());
+		updateData();
+		return false;
+	}); 
+
+	$('#expenseBttn').click(function () {
+		$.post('add',  $('form#buy').serialize());
+
+		updateData();
+		return false;
+
+	}); 
+
+}); 
