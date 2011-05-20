@@ -16,7 +16,7 @@ class Meal(db.Model):
   category = db.CategoryProperty(required=True)
   datetime = db.DateTimeProperty(auto_now_add=True)
 
-def user_key(user_name=None):
+def get_user_key(user_name=None):
   return db.Key.from_path('User', user_name)
 
 class Expense(db.Model):
@@ -44,7 +44,7 @@ class Greeting(webapp.RequestHandler):
     else:
       url = users.create_login_url(self.request.uri)
       url_linktext = 'Login'
-      path = os.path.join(os.path.dirname(__file__), 'index.html')
+      path = os.path.join(os.path.dirname(__file__), 'htm/index.html')
       values = {
         'url_linktext': url_linktext,
         'url': url
@@ -64,7 +64,7 @@ class MainPage(webapp.RequestHandler):
       cost = 0
       for expense in expenses:
         cost += expense.amount
-      path = os.path.join(os.path.dirname(__file__), 'template.html')
+      path = os.path.join(os.path.dirname(__file__), 'htm/template.html')
       values = {
         'cost' : cost,
         'user' : user,

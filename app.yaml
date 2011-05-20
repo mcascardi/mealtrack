@@ -17,5 +17,9 @@ handlers:
   static_files: img/favicon.ico
   upload: img/favicon\.ico
 
+- url: /why.html
+  static_files: htm/why.html
+  upload: htm/why.html
+
 - url: /(.*)
   script: index.py
