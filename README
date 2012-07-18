@@ -1,0 +1,10 @@
+
+* Meal Tracks Application
+
+** Introduction
+   - Welcome to the Meal Tracks&trade; meal tracking application.  This app is specifically designed for people who want to keep a log of what they spend on food, and what they eat on a regular basis.  This can provide the user with interesting information about dietary habits, or speding habits within their choices of eating.
+
+**  History
+   - Mealtrack version 1 was created as a demo of the Google Appengine infrastructure using a Python implementation in django.  
+
+   - Version 2 is an attempt to port the original app to Python 2.7 and the latest implementation of django on Googles Apengine architecture.
